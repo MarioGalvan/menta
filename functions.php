@@ -271,9 +271,9 @@ function ValidacionesGenerales() {
 	
 	
 	 //MENSAJES GENERALES ERRORES
-	$message = 'Hola, por primera vez debes comprar en la categoria zapatos ó ropa 6 prendas diferentes variadas'; 
+	
 	$notice_type = 'success'; 
-	$messageaccesorios = "debe tener un pedido con un mínimo de $200.000 en accesorios para realizar su pedido";
+	$messageerror = "¡Hola! Recuerda que para que puedas finalizar tu compra debes tener al menos $200.000 en accesorios o 6 unidades por cada categoría de zapatos, pijamas o 6 unidades por cada subcategoría de ropa con prendas y tallas surtidas (S, M, L).";
 	
 	
 	
@@ -379,7 +379,7 @@ function ValidacionesGenerales() {
 				$countpijamas+=$cart_item['quantity'];
 				$existepijamas=1;
 			}else if(has_term($categoriaaccesorios, 'product_cat', $product_id )){
-				$countaccesorios+=$cart_item['quantity'];
+				// $countaccesorios+=$cart_item['quantity'];
 				$product = wc_get_product($product_id);
 				$preciotal=$product->get_price()*$cart_item['quantity'];
 				$totalcompradoaccesorios+=$preciotal;
@@ -388,30 +388,30 @@ function ValidacionesGenerales() {
 		
     }
 
-
-
+	var_dump($totalcompradoaccesorios);
+	var_dump($totalcompradoaccesorios>200000);
 
 	
 
 	$totalzapatos = $countzapatos+$countzapatosplataforma+$countzapatossandalia+$countzapatostenis;
-
+	
 
 	if(($existeblusa==1 || $existefalda==1 || $existejean==1 || $existecamiseta==1 || $existeenterizo==1 ||
 	$existepantalon==1 || $existeshort==1 || $existevestido==1 || $existezapatos==1 || $existepijamas==1 || $existeaccesorios==1)
 	 &&  $countblusas<6 || $countfalda<6 || $countjean<6 || $countcamiseta<6 || $countenterizo<6 || $countpantalon<6 
-	 || $countshort<6 || $countvestido<6  || $totalzapatos<6 || $countpijamas<6 || $totalcompradoaccesorio<200000
+	 || $countshort<6 || $countvestido<6  || $totalzapatos<6 || $countpijamas<6 || $totalcompradoaccesorios<200000
 	 
 	 	){
 
 
-		//falta mostrar el mensaje y quitar el boton de finalizar compra para mayorista
+	
+		wc_add_notice($messageerror, $notice_type);
 		remove_action('woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);
 	}else{
 		add_action( 'woocommerce_proceed_to_checkout', 'action_woocommerce_proceed_to_checkout', 10, 2 ); 
 	}
 
 
-	
 
 
 
