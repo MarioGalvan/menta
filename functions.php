@@ -291,10 +291,10 @@ function ValidacionesGenerales() {
 	$categoriazapatosplataforma='plataforma';
 	$categoriazapatossandalia='sandalias';
 	$categoriazapatostenis='tenis';
-	$categoriapijamas='pijamas';
-	$categoriaaccesorios   = array('accesorios','accesorios-nina','panoleta-accesorios','anillos','aretes',
-						  'cojines','vestido-de-bano','pantuflas','bolsos','cosmetiqueras','collares','diademas','lamparas','tapetes',
-						  'maquillaje','panoleta','medias','tapa-ojos','variedades','termos');
+	$categoriapijamas= array( 'pijamas','pijama-capri','pijama-pantalon','pijama-short', 'levantadores','bata');
+	$categoriaaccesorios= array('accesorios','accesorios-nina','panoleta-accesorios','anillos','aretes',
+	'cojines','vestido-de-bano','pantuflas','bolsos','cosmetiqueras','collares','diademas','lamparas','tapetes',
+	'maquillaje','panoleta','medias','tapa-ojos','variedades','termos');
 
 	
 	
@@ -312,10 +312,8 @@ function ValidacionesGenerales() {
 	$countzapatosplataforma=0;
 	$countzapatossandalia=0;
 	$countzapatostenis=0;
-	$countpijamas= array( 'pijamas','pijama-capri','pijama-pantalon','pijama-short', 'levantadores','bata');
-	$countaccesorios= array('accesorios','accesorios-nina','panoleta-accesorios','anillos','aretes',
-	'cojines','vestido-de-bano','pantuflas','bolsos','cosmetiqueras','collares','diademas','lamparas','tapetes',
-	'maquillaje','panoleta','medias','tapa-ojos','variedades','termos');;
+	$countpijamas=0;
+	$countaccesorios=0;
 
 	
 	//VARIABLES EXISTENTES
@@ -330,7 +328,7 @@ function ValidacionesGenerales() {
 	$existezapatos=0;	
 	$existepijamas=0;
 	$existeaccesorios=0;
-
+	$totalcompradoaccesorios=0;
 	
 	
 	//Validacion para categoria ropa
@@ -382,6 +380,9 @@ function ValidacionesGenerales() {
 				$existepijamas=1;
 			}else if(has_term($categoriaaccesorios, 'product_cat', $product_id )){
 				$countaccesorios+=$cart_item['quantity'];
+				$product = wc_get_product($product_id);
+				$preciotal=$product->get_price()*$cart_item['quantity'];
+				$totalcompradoaccesorios+=$preciotal;
 				$existeaccesorios=1;
 			}
 		
@@ -391,52 +392,14 @@ function ValidacionesGenerales() {
 
 
 	
-	//validacion categoria accesorios
-	 foreach(WC()->cart->get_cart() as $cart_item ) {
-
-		$item_quantity = $cart_item['quantity']; // Cart item quantity
-        $product_id    = $cart_item['product_id']; // The product ID
-				
-			//validar si en el carrito hay categoria accesorios
-			 if( has_term($categoriaaccesorios, 'product_cat', $product_id )) {
-				 $existeaccesorio=1;
-			 }else{
-				$existeaccesorio=0;
-			 }
-    }
-	
-	
-	
-	
-	
-	/*VALIDACIONES GENERALES*/
-	
-
-	// $categoriafalda='falda';
-	// $categoriablusa='blusas';
-	// $categoriajean='jean';
-	// $categoriacamiseta='camiseta';
-	// $categoriaenterizo='enterizo';
-	// $categoriapantalon='pantalon';
-	// $categoriashort='short';
-	// $categoriavestido='vestido';	
-	// $categoriazapatos='zapatos';	
-	// $categoriazapatossale='zapatos-sale';
-	// $categoriazapatosplataforma='plataforma';
-	// $categoriazapatossandalia='sandalias';
-	// $categoriazapatostenis='tenis';
-	// $categoriapijamas='pijamas';
-	// $categoriaaccesorios='accesorios';
 
 	$totalzapatos = $countzapatos+$countzapatosplataforma+$countzapatossandalia+$countzapatostenis;
 
-	var_dump($totalzapatos);
-
 
 	if(($existeblusa==1 || $existefalda==1 || $existejean==1 || $existecamiseta==1 || $existeenterizo==1 ||
-	$existepantalon==1 || $existeshort==1 || $existevestido==1 || $existezapatos==1 || $existepijamas==1)
+	$existepantalon==1 || $existeshort==1 || $existevestido==1 || $existezapatos==1 || $existepijamas==1 || $existeaccesorios==1)
 	 &&  $countblusas<6 || $countfalda<6 || $countjean<6 || $countcamiseta<6 || $countenterizo<6 || $countpantalon<6 
-	 || $countshort<6 || $countvestido<6  || $totalzapatos<6
+	 || $countshort<6 || $countvestido<6  || $totalzapatos<6 || $countpijamas<6 || $totalcompradoaccesorio<200000
 	 
 	 	){
 
