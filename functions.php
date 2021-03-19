@@ -266,9 +266,7 @@ function ValidacionesGenerales() {
 	
 	global $woocommerce;
 	
-	$categoriaaccesorios   = array('accesorios','accesorios-nina','panoleta-accesorios','anillos','aretes',
-						  'cojines','vestido-de-bano','pantuflas','bolsos','cosmetiqueras','collares','diademas','lamparas','tapetes',
-						  'maquillaje','panoleta','medias','tapa-ojos','variedades','termos'); 
+	 
 	
 	
 	
@@ -294,7 +292,9 @@ function ValidacionesGenerales() {
 	$categoriazapatossandalia='sandalias';
 	$categoriazapatostenis='tenis';
 	$categoriapijamas='pijamas';
-	$categoriaaccesorios='accesorios';
+	$categoriaaccesorios   = array('accesorios','accesorios-nina','panoleta-accesorios','anillos','aretes',
+						  'cojines','vestido-de-bano','pantuflas','bolsos','cosmetiqueras','collares','diademas','lamparas','tapetes',
+						  'maquillaje','panoleta','medias','tapa-ojos','variedades','termos');
 
 	
 	
@@ -334,9 +334,7 @@ function ValidacionesGenerales() {
 	//Validacion para categoria ropa
     foreach(WC()->cart->get_cart() as $cart_item ) {
 
-		$item_quantity = $cart_item['quantity']; // Cart item quantity
         $product_id    = $cart_item['product_id']; // The product ID
-		$product = $cart_item['data'];
 		
 			if( has_term($categoriafalda, 'product_cat', $product_id )) {
 					$countfalda+=$cart_item['quantity'];
