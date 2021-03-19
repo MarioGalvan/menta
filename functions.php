@@ -312,8 +312,10 @@ function ValidacionesGenerales() {
 	$countzapatosplataforma=0;
 	$countzapatossandalia=0;
 	$countzapatostenis=0;
-	$countpijamas=0;
-	$countaccesorios=0;
+	$countpijamas= array( 'pijamas','pijama-capri','pijama-pantalon','pijama-short', 'levantadores','bata');
+	$countaccesorios= array('accesorios','accesorios-nina','panoleta-accesorios','anillos','aretes',
+	'cojines','vestido-de-bano','pantuflas','bolsos','cosmetiqueras','collares','diademas','lamparas','tapetes',
+	'maquillaje','panoleta','medias','tapa-ojos','variedades','termos');;
 
 	
 	//VARIABLES EXISTENTES
@@ -386,7 +388,7 @@ function ValidacionesGenerales() {
     }
 
 
-	
+
 
 	
 	//validacion categoria accesorios
