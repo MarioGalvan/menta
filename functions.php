@@ -275,20 +275,11 @@ function ValidacionesGenerales() {
 	
 	
 	
-    $min_item_qty  = 1; 
-    $display_error = false;
-	
 	 //MENSAJES GENERALES ERRORES
 	$message = 'Hola, por primera vez debes comprar en la categoria zapatos ó ropa 6 prendas diferentes variadas'; 
 	$notice_type = 'success'; 
 	$messageaccesorios = "debe tener un pedido con un mínimo de $200.000 en accesorios para realizar su pedido";
 	
-	//VARIABLES GLOBALES
-	$existeropa=0;
-	$existeaccesorio=0;
-	$validounarticulobyropa=0;
-	$countbycaterogy=0;
-	$arrayinterno;
 	
 	
 	//NUEVAS CATEGORIAS SEPARADAS
@@ -320,31 +311,10 @@ function ValidacionesGenerales() {
 				$existeblusa=1;
 			}
 		
-			//validar si en el carrito hay categoria ropa
-// 			 if( has_term($categoriasropa, 'product_cat', $product_id )) {
-// 				 $existeropa=1;
-// 				 $countbycaterogy+=1;
-// 				 $a = array($product=>$item_quantity);
-// 				 echo'<script type="text/javascript">
-//     			console.log("articles by ropa count: '.print_r($product).' ");
-//    				 </script>';
-	
-				 
-// 				$arrayinterno= array_push($a);
-				 
-// 				 if($item_quantity>1){
-// 				 $validounarticulobyropa=0;
-// 				 }else if($item_quantity==1){
-// 					 $validounarticulobyropa=1;
-// 				 }
-// 			 }
-// 			 
-// 			 
-		
-		
-		
-		
     }
+
+
+
 	
 	//validacion categoria accesorios
 	 foreach(WC()->cart->get_cart() as $cart_item ) {
@@ -366,80 +336,6 @@ function ValidacionesGenerales() {
 	
 	/*VALIDACIONES GENERALES*/
 	
-	
-	echo'<script type="text/javascript">
-    console.log("existe falda - cuantas?: '.$countfalda.' ");
-    </script>';
-	
-	
-	
-	echo'<script type="text/javascript">
-    console.log("existe blussas - cuantas?: '.$countblusas.' ");
-    </script>';
-	
-	
-	
-	
-// 	echo'<script type="text/javascript">
-//     console.log("existe ropa: '.$existeropa.' ");
-//     </script>';
-	
-// 	echo'<script type="text/javascript">
-//     console.log("existe accesorios: '.$existeaccesorio.' ");
-//     </script>';
-	
-// 	echo'<script type="text/javascript">
-//     console.log("cada categoria tiene un articulo?: '.$validounarticulobyropa.' ");
-//     </script>';
-	
-// 	echo'<script type="text/javascript">
-//     console.log("cuantos articulos variados hay?: '.$woocommerce->cart->cart_contents_count.' ");
-//     </script>';
-	
-// 	echo'<script type="text/javascript">
-//     console.log("articles by ropa count: '.$arrayinterno[0].' ");
-//     </script>';
-	
-	
-	
-	
-	//VALIDACION ACCESORIOS 200 MIL 
-// 	if($existeaccesorio==1 && WC()->cart->total<200000 ){
-// 		remove_action('woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);
-// 		wc_add_notice($messageaccesorios, $notice_type);
-// 	}else if($existeaccesorio==1 && $existeropa==0 || WC()->cart->total>=200000 ){
-		
-// 		//si cumple la condicion activa los botones para finalizar compra
-		
-// 		add_action('woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);  
-// 		add_action('woocommerce_checkout_order_review', 'woocommerce_order_review', 10);
-// 	}else if($existeaccesorio==1 && $existeropa==1 || WC()->cart->total>=200000){
-		
-// 		//si en el carrito existe la categoria ropa
-		
-// 		add_action('woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);  
-// 		add_action('woocommerce_checkout_order_review', 'woocommerce_order_review', 10);
-// 	}
-	
-	
-	
-	//VALIDACION ROPA
-	
-// 	if($existeropa==1 &&  $woocommerce->cart->cart_contents_count<6){
-		
-// 		remove_action('woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);
-// 		wc_add_notice($message, $notice_type);
-// 	}else if($existeropa==1 &&  $woocommerce->cart->cart_contents_count>=6){
-		
-// 		//si en el carrito existe al menos una prenda de ropa y en total son 6
-		
-// 		add_action('woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);  
-// 		add_action('woocommerce_checkout_order_review', 'woocommerce_order_review', 10);
-// 	}
-	
-	
-	
-		
 	var_dump($countblusas<6);
 	var_dump($countblusas);
 	if($existeblusa==1 && $countblusas<6){
@@ -454,58 +350,7 @@ function ValidacionesGenerales() {
 	}
 	
 	
-	
-	
-	
 }
-
-
-
-
-// function wc_minimum_order_amount() {
-   
-	
-//     $minimum = 200000;
-// 	$categories    = array('accesorios','accesorios-nina','panoleta-accesorios','anillos','aretes',
-// 						  'cojines','vestido-de-bano','pantuflas','bolsos','cosmetiqueras','collares','diademas','lamparas','tapetes',
-// 						  'maquillaje','panoleta','medias','tapa-ojos','variedades','termos');
-	
-// 	foreach(WC()->cart->get_cart() as $cart_item ) {
-		
-// 		$item_quantity = $cart_item['quantity']; // Cart item quantity
-//         $product_id    = $cart_item['product_id']; // The product ID
-		
-// 		if( has_term( $categories, 'product_cat', $product_id ) ||  WC()->cart->total < $minimum  ) {
-
-   
-// 			remove_action('woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);
-//             wc_print_notice( 
-//                  sprintf( 'El total de su pedido actual es de  %s — debe tener un pedido con un mínimo de  %s para realizar su pedido' ,  
-//                     wc_price( WC()->cart->total ), 
-//                     wc_price( $minimum )
-//                 ), 'error' 
-//             );
-// 			 echo'<script type="text/javascript">
-//     console.log("MINIMUM ORDER ERROR");
-    
-//     </script>'; 
-
-        
-//     }else{
-// 		    echo'<script type="text/javascript">
-//     console.log("MINIMUM ORDER OK");
-    
-//     </script>'; 
-// 		 add_action('woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);  
-// 		  add_action('woocommerce_checkout_order_review', 'woocommerce_order_review', 10);
-// 	 }
-		
-// 	}
-		
-
- 	
-// }
-
 
 
 
