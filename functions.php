@@ -305,12 +305,12 @@ function ValidacionesGenerales() {
 	$categoriazapatosplataforma='plataforma';
 	$categoriazapatossandalia='sandalias';
 	$categoriazapatostenis='tenis';
-	$categoriazapatospijamas='pijamas';
-	$categoriazapatospijamacapri='pijama-capri';
-	$categoriazapatospijamapantalon='pijama-pantalon';
-	$categoriazapatospijamashort='pijama-short';
-	$categoriazapatospijamalevantadores='levantadores';
-	$categoriazapatospijamabata='bata';
+	$categoriapijamas='pijamas';
+	$categoriapijamacapri='pijama-capri';
+	$categoriapijamapantalon='pijama-pantalon';
+	$categoriapijamashort='pijama-short';
+	$categoriapijamalevantadores='levantadores';
+	$categoriapijamabata='bata';
 
 	
 	//VARIABLES CONTADORAS POR CATEGORIA
@@ -402,9 +402,24 @@ function ValidacionesGenerales() {
 			}else if(has_term($categoriazapatostenis, 'product_cat', $product_id )){
 				$countzapatostenis+=$cart_item['quantity'];
 				$existezapatostenis=1;
-			}else if(has_term($categoriablusa, 'product_cat', $product_id )){
-				$countblusas+=$cart_item['quantity'];
-				$existeblusa=1;
+			}else if(has_term($categoriapijamas, 'product_cat', $product_id )){
+				$countpijamas+=$cart_item['quantity'];
+				$existepijamas=1;
+			}else if(has_term($categoriapijamacapri, 'product_cat', $product_id )){
+				$countpijamacapri+=$cart_item['quantity'];
+				$existepijamacapri=1;
+			}else if(has_term($categoriapijamapantalon, 'product_cat', $product_id )){
+				$countpijamapantalon+=$cart_item['quantity'];
+				$existepijamapantalon=1;
+			}else if(has_term($categoriapijamashort, 'product_cat', $product_id )){
+				$countpijamashort+=$cart_item['quantity'];
+				$existepijamashort=1;
+			}else if(has_term($categoriapijamalevantadores, 'product_cat', $product_id )){
+				$countpijamalevantadores+=$cart_item['quantity'];
+				$existepijamalevantadores=1;
+			}else if(has_term($categoriapijamabata, 'product_cat', $product_id )){
+				$countpijamabata+=$cart_item['quantity'];
+				$existepijamabata=1;
 			}
 		
 			//validar si en el carrito hay categoria ropa
