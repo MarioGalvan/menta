@@ -441,9 +441,10 @@ function ValidacionesGenerales() {
 	var_dump($countblusas<6);
 	var_dump($countblusas);
 
-	if($existeblusa==1 && $countblusas<6){
+	if(($existeblusa==1 || $existefalda==1) &&  $countblusas<6 || $countfalda<6 ){
 		remove_action('woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);
-			
+	}else{
+		add_action( 'woocommerce_proceed_to_checkout', 'action_woocommerce_proceed_to_checkout', 10, 2 ); 
 	}
 
 
