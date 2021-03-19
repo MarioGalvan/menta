@@ -265,7 +265,6 @@ function ValidacionesGenerales() {
 
 	
 	global $woocommerce;
-
 	
 	$categoriaaccesorios   = array('accesorios','accesorios-nina','panoleta-accesorios','anillos','aretes',
 						  'cojines','vestido-de-bano','pantuflas','bolsos','cosmetiqueras','collares','diademas','lamparas','tapetes',
@@ -389,6 +388,7 @@ function ValidacionesGenerales() {
     }
 
 
+	
 
 	
 	//validacion categoria accesorios
