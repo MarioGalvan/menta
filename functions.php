@@ -306,12 +306,9 @@ function ValidacionesGenerales() {
 	$categoriazapatossandalia='sandalias';
 	$categoriazapatostenis='tenis';
 	$categoriapijamas='pijamas';
-	$categoriapijamacapri='pijama-capri';
-	$categoriapijamapantalon='pijama-pantalon';
-	$categoriapijamashort='pijama-short';
-	$categoriapijamalevantadores='levantadores';
-	$categoriapijamabata='bata';
+	$categoriaaccesorios='accesorios';
 
+	
 	
 	//VARIABLES CONTADORAS POR CATEGORIA
 	$countfalda=0;
@@ -328,11 +325,8 @@ function ValidacionesGenerales() {
 	$countzapatossandalia=0;
 	$countzapatostenis=0;
 	$countpijamas=0;
-	$countpijamacapri=0;
-	$countpijamapantalon=0;
-	$countpijamashort=0;
-	$countpijamalevantadores=0;
-	$countpijamabata=0;
+	$countaccesorios=0;
+
 	
 	//VARIABLES EXISTENTES
 	$existefalda=0;
@@ -349,11 +343,8 @@ function ValidacionesGenerales() {
 	$existezapatossandalia=0;
 	$existezapatostenis=0;
 	$existepijamas=0;
-	$existepijamacapri=0;
-	$existepijamapantalon=0;
-	$existepijamashort=0;
-	$existepijamalevantadores=0;
-	$existepijamabata=0;
+	$existeaccesorios=0;
+
 	
 	
 	//Validacion para categoria ropa
@@ -405,21 +396,9 @@ function ValidacionesGenerales() {
 			}else if(has_term($categoriapijamas, 'product_cat', $product_id )){
 				$countpijamas+=$cart_item['quantity'];
 				$existepijamas=1;
-			}else if(has_term($categoriapijamacapri, 'product_cat', $product_id )){
-				$countpijamacapri+=$cart_item['quantity'];
-				$existepijamacapri=1;
-			}else if(has_term($categoriapijamapantalon, 'product_cat', $product_id )){
-				$countpijamapantalon+=$cart_item['quantity'];
-				$existepijamapantalon=1;
-			}else if(has_term($categoriapijamashort, 'product_cat', $product_id )){
-				$countpijamashort+=$cart_item['quantity'];
-				$existepijamashort=1;
-			}else if(has_term($categoriapijamalevantadores, 'product_cat', $product_id )){
-				$countpijamalevantadores+=$cart_item['quantity'];
-				$existepijamalevantadores=1;
-			}else if(has_term($categoriapijamabata, 'product_cat', $product_id )){
-				$countpijamabata+=$cart_item['quantity'];
-				$existepijamabata=1;
+			}else if(has_term($categoriaaccesorios, 'product_cat', $product_id )){
+				$countaccesorios+=$cart_item['quantity'];
+				$existeaccesorios=1;
 			}
 		
 			//validar si en el carrito hay categoria ropa
