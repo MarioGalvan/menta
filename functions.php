@@ -237,12 +237,14 @@ if(my_has_role($user, 'wholesale_customer')) {
 	$fecha_ultima_compra = $data['fecha_ultima_compra'][0];
 	$fechadehoy = date('d-m-Y');
 	$dias = dias_pasados($fecha_ultima_compra,$fechadehoy);
-	
+	add_action( 'woocommerce_checkout_create_order', 'action_woocommerce_checkout_create_order', 10, 2 ); 
+
+
 	
 	if($dias<1 || $dias>=15){
 	add_action( 'woocommerce_check_cart_items', 'ValidacionesGenerales' );
-//  	add_action( 'woocommerce_check_cart_items', 'wc_minimum_order_amount' );
 	add_action( 'woocommerce_checkout_create_order', 'action_woocommerce_checkout_create_order', 10, 2 ); 
+	add_action( 'woocommerce_cart_updated', 'ValidacionesGenerales', 10, 0 ); 
  	
 	}else{
 		echo'<script type="text/javascript">
@@ -263,11 +265,7 @@ function ValidacionesGenerales() {
 
 	
 	global $woocommerce;
-	
-	//categorias listas
-    //$categoriasropa    = array('zapatos','zapatos-sale','jean','blusas','camiseta','enterizo','pantalon','short',
-	//					  'plataforma','sandalias','tenis','falda','pijamas','pijama-capri','pijama-pantalon','pijama-short',
-	//					  'levantadores','bata','vestido'); 
+
 	
 	$categoriaaccesorios   = array('accesorios','accesorios-nina','panoleta-accesorios','anillos','aretes',
 						  'cojines','vestido-de-bano','pantuflas','bolsos','cosmetiqueras','collares','diademas','lamparas','tapetes',
@@ -329,10 +327,6 @@ function ValidacionesGenerales() {
 	$existeshort=0;
 	$existevestido=0;	
 	$existezapatos=0;	
-	$existezapatossale=0;
-	$existezapatosplataforma=0;
-	$existezapatossandalia=0;
-	$existezapatostenis=0;
 	$existepijamas=0;
 	$existeaccesorios=0;
 
@@ -346,7 +340,7 @@ function ValidacionesGenerales() {
 		$product = $cart_item['data'];
 		
 			if( has_term($categoriafalda, 'product_cat', $product_id )) {
-					$countfalda+=1;
+					$countfalda+=$cart_item['quantity'];
 					$existefalda=1;
 			}else if(has_term($categoriablusa, 'product_cat', $product_id )){
 				$countblusas+=$cart_item['quantity'];
@@ -374,16 +368,16 @@ function ValidacionesGenerales() {
 				$existezapatos=1;
 			}else if(has_term($categoriazapatossale, 'product_cat', $product_id )){
 				$countzapatossale+=$cart_item['quantity'];
-				$existezapatossale=1;
+				$existezapatos=1;
 			}else if(has_term($categoriazapatosplataforma, 'product_cat', $product_id )){
 				$countzapatosplataforma+=$cart_item['quantity'];
-				$existezapatosplataforma=1;
+				$existezapatos=1;
 			}else if(has_term($categoriazapatossandalia, 'product_cat', $product_id )){
 				$countzapatossandalia+=$cart_item['quantity'];
-				$existezapatossandalia=1;
+				$existezapatos=1;
 			}else if(has_term($categoriazapatostenis, 'product_cat', $product_id )){
 				$countzapatostenis+=$cart_item['quantity'];
-				$existezapatostenis=1;
+				$existezapatos=1;
 			}else if(has_term($categoriapijamas, 'product_cat', $product_id )){
 				$countpijamas+=$cart_item['quantity'];
 				$existepijamas=1;
@@ -417,10 +411,37 @@ function ValidacionesGenerales() {
 	
 	/*VALIDACIONES GENERALES*/
 	
-	var_dump($countblusas<6);
-	var_dump($countblusas);
 
-	if(($existeblusa==1 || $existefalda==1) &&  $countblusas<6 || $countfalda<6 ){
+	// $categoriafalda='falda';
+	// $categoriablusa='blusas';
+	// $categoriajean='jean';
+	// $categoriacamiseta='camiseta';
+	// $categoriaenterizo='enterizo';
+	// $categoriapantalon='pantalon';
+	// $categoriashort='short';
+	// $categoriavestido='vestido';	
+	// $categoriazapatos='zapatos';	
+	// $categoriazapatossale='zapatos-sale';
+	// $categoriazapatosplataforma='plataforma';
+	// $categoriazapatossandalia='sandalias';
+	// $categoriazapatostenis='tenis';
+	// $categoriapijamas='pijamas';
+	// $categoriaaccesorios='accesorios';
+
+	$totalzapatos = $countzapatos+$countzapatosplataforma+$countzapatossandalia+$countzapatostenis;
+
+	var_dump($totalzapatos);
+
+
+	if(($existeblusa==1 || $existefalda==1 || $existejean==1 || $existecamiseta==1 || $existeenterizo==1 ||
+	$existepantalon==1 || $existeshort==1 || $existevestido==1 || $existezapatos==1 || $existepijamas==1)
+	 &&  $countblusas<6 || $countfalda<6 || $countjean<6 || $countcamiseta<6 || $countenterizo<6 || $countpantalon<6 
+	 || $countshort<6 || $countvestido<6  || $totalzapatos<6
+	 
+	 	){
+
+
+		//falta mostrar el mensaje y quitar el boton de finalizar compra para mayorista
 		remove_action('woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);
 	}else{
 		add_action( 'woocommerce_proceed_to_checkout', 'action_woocommerce_proceed_to_checkout', 10, 2 ); 
