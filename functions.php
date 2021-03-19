@@ -327,12 +327,12 @@ function ValidacionesGenerales() {
 	$countzapatosplataforma='plataforma';
 	$countzapatossandalia='sandalias';
 	$countzapatostenis='tenis';
-	$countzapatospijamas='pijamas';
-	$countzapatospijamacapri='pijama-capri';
-	$countzapatospijamapantalon='pijama-pantalon';
-	$countzapatospijamashort='pijama-short';
-	$countzapatospijamalevantadores='levantadores';
-	$countzapatospijamabata='bata';
+	$countpijamas='pijamas';
+	$countpijamacapri='pijama-capri';
+	$countpijamapantalon='pijama-pantalon';
+	$countpijamashort='pijama-short';
+	$countpijamalevantadores='levantadores';
+	$countpijamabata='bata';
 	
 	//VARIABLES EXISTENTES
 	$existefalda=0;
@@ -348,12 +348,12 @@ function ValidacionesGenerales() {
 	$existezapatosplataforma='plataforma';
 	$existezapatossandalia='sandalias';
 	$existezapatostenis='tenis';
-	$existezapatospijamas='pijamas';
-	$existezapatospijamacapri='pijama-capri';
-	$existezapatospijamapantalon='pijama-pantalon';
-	$existezapatospijamashort='pijama-short';
-	$existezapatospijamalevantadores='levantadores';
-	$existezapatospijamabata='bata';
+	$existepijamas='pijamas';
+	$existepijamacapri='pijama-capri';
+	$existepijamapantalon='pijama-pantalon';
+	$existepijamashort='pijama-short';
+	$existepijamalevantadores='levantadores';
+	$existepijamabata='bata';
 	
 	
 	//Validacion para categoria ropa
@@ -366,6 +366,42 @@ function ValidacionesGenerales() {
 			if( has_term($categoriafalda, 'product_cat', $product_id )) {
 					$countfalda+=1;
 					$existefalda=1;
+			}else if(has_term($categoriablusa, 'product_cat', $product_id )){
+				$countblusas+=$cart_item['quantity'];
+				$existeblusa=1;
+			}else if(has_term($categoriajean, 'product_cat', $product_id )){
+				$countjean+=$cart_item['quantity'];
+				$existejean=1;
+			}else if(has_term($categoriacamiseta, 'product_cat', $product_id )){
+				$countcamiseta+=$cart_item['quantity'];
+				$existecamiseta=1;
+			}else if(has_term($categoriaenterizo, 'product_cat', $product_id )){
+				$countenterizo+=$cart_item['quantity'];
+				$existeenterizo=1;
+			}else if(has_term($categoriapantalon, 'product_cat', $product_id )){
+				$countpantalon+=$cart_item['quantity'];
+				$existepantalon=1;
+			}else if(has_term($categoriashort, 'product_cat', $product_id )){
+				$countshort+=$cart_item['quantity'];
+				$existeshort=1;
+			}else if(has_term($categoriavestido, 'product_cat', $product_id )){
+				$countvestido+=$cart_item['quantity'];
+				$existevestido=1;
+			}else if(has_term($categoriazapatos, 'product_cat', $product_id )){
+				$countzapatos+=$cart_item['quantity'];
+				$existezapatos=1;
+			}else if(has_term($categoriazapatossale, 'product_cat', $product_id )){
+				$countzapatossale+=$cart_item['quantity'];
+				$existezapatossale=1;
+			}else if(has_term($categoriazapatosplataforma, 'product_cat', $product_id )){
+				$countzapatosplataforma+=$cart_item['quantity'];
+				$existezapatosplataforma=1;
+			}else if(has_term($categoriazapatossandalia, 'product_cat', $product_id )){
+				$countzapatossandalia+=$cart_item['quantity'];
+				$existezapatossandalia=1;
+			}else if(has_term($categoriazapatostenis, 'product_cat', $product_id )){
+				$countzapatostenis+=$cart_item['quantity'];
+				$existezapatostenis=1;
 			}else if(has_term($categoriablusa, 'product_cat', $product_id )){
 				$countblusas+=$cart_item['quantity'];
 				$existeblusa=1;
