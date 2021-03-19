@@ -294,15 +294,66 @@ function ValidacionesGenerales() {
 	//NUEVAS CATEGORIAS SEPARADAS
 	$categoriafalda='falda';
 	$categoriablusa='blusas';
-	
+	$categoriajean='jean';
+	$categoriacamiseta='camiseta';
+	$categoriaenterizo='enterizo';
+	$categoriapantalon='pantalon';
+	$categoriashort='short';
+	$categoriavestido='vestido';	
+	$categoriazapatos='zapatos';	
+	$categoriazapatossale='zapatos-sale';
+	$categoriazapatosplataforma='plataforma';
+	$categoriazapatossandalia='sandalias';
+	$categoriazapatostenis='tenis';
+	$categoriazapatospijamas='pijamas';
+	$categoriazapatospijamacapri='pijama-capri';
+	$categoriazapatospijamapantalon='pijama-pantalon';
+	$categoriazapatospijamashort='pijama-short';
+	$categoriazapatospijamalevantadores='levantadores';
+	$categoriazapatospijamabata='bata';
+
 	
 	//VARIABLES CONTADORAS POR CATEGORIA
 	$countfalda=0;
 	$countblusas=0;
+	$countjean='jean';
+	$countcamiseta='camiseta';
+	$countenterizo='enterizo';
+	$countpantalon='pantalon';
+	$countshort='short';
+	$countvestido='vestido';	
+	$countzapatos='zapatos';	
+	$countzapatossale='zapatos-sale';
+	$countzapatosplataforma='plataforma';
+	$countzapatossandalia='sandalias';
+	$countzapatostenis='tenis';
+	$countzapatospijamas='pijamas';
+	$countzapatospijamacapri='pijama-capri';
+	$countzapatospijamapantalon='pijama-pantalon';
+	$countzapatospijamashort='pijama-short';
+	$countzapatospijamalevantadores='levantadores';
+	$countzapatospijamabata='bata';
 	
 	//VARIABLES EXISTENTES
 	$existefalda=0;
 	$existeblusa=0;
+	$existejean='jean';
+	$existecamiseta='camiseta';
+	$existeenterizo='enterizo';
+	$existepantalon='pantalon';
+	$existeshort='short';
+	$existevestido='vestido';	
+	$existezapatos='zapatos';	
+	$existezapatossale='zapatos-sale';
+	$existezapatosplataforma='plataforma';
+	$existezapatossandalia='sandalias';
+	$existezapatostenis='tenis';
+	$existezapatospijamas='pijamas';
+	$existezapatospijamacapri='pijama-capri';
+	$existezapatospijamapantalon='pijama-pantalon';
+	$existezapatospijamashort='pijama-short';
+	$existezapatospijamalevantadores='levantadores';
+	$existezapatospijamabata='bata';
 	
 	
 	//Validacion para categoria ropa
