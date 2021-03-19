@@ -265,9 +265,9 @@ function ValidacionesGenerales() {
 	global $woocommerce;
 	
 	//categorias listas
-    $categoriasropa    = array('zapatos','zapatos-sale','jean','blusas','camiseta','enterizo','pantalon','short',
-						  'plataforma','sandalias','tenis','falda','pijamas','pijama-capri','pijama-pantalon','pijama-short',
-						  'levantadores','bata','vestido'); 
+    //$categoriasropa    = array('zapatos','zapatos-sale','jean','blusas','camiseta','enterizo','pantalon','short',
+	//					  'plataforma','sandalias','tenis','falda','pijamas','pijama-capri','pijama-pantalon','pijama-short',
+	//					  'levantadores','bata','vestido'); 
 	
 	$categoriaaccesorios   = array('accesorios','accesorios-nina','panoleta-accesorios','anillos','aretes',
 						  'cojines','vestido-de-bano','pantuflas','bolsos','cosmetiqueras','collares','diademas','lamparas','tapetes',
