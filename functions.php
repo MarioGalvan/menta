@@ -440,16 +440,17 @@ function ValidacionesGenerales() {
 	
 	var_dump($countblusas<6);
 	var_dump($countblusas);
+
 	if($existeblusa==1 && $countblusas<6){
 		remove_action('woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);
-		
-		
-			
-	}else{
-		add_action('woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);  
- 		  add_action('woocommerce_checkout_order_review', 'woocommerce_order_review', 10);
 			
 	}
+
+
+	
+
+
+
 	
 	
 }
